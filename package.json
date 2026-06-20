@@ -1,0 +1,93 @@
+{
+  "name": "nenopix-studio",
+  "version": "1.0.0",
+  "description": "Nenopix Studio — Unified AI Image Generation Platform CLI & MCP Server",
+  "main": "dist/cli/index.js",
+  "bin": {
+    "nenopix": "./dist/cli/index.js"
+  },
+  "scripts": {
+    "copy:assets": "node -e \"require('fs-extra').copySync('src/web', 'dist/web')\"",
+    "db:generate": "prisma generate",
+    "build": "npm run db:generate && tsc && npm run copy:assets",
+    "build:watch": "tsc --watch",
+    "dev": "ts-node src/cli/index.ts",
+    "start": "node dist/cli/index.js",
+    "clean": "rimraf dist",
+    "prepare": "npm run build",
+    "postinstall": "node -e \"try{require('child_process').execSync('node dist/cli/index.js --post-install',{stdio:'inherit'})}catch(e){}\"",
+    "link": "npm run build && npm link",
+    "docker:build": "docker build -t imageforge-cli -f docker/Dockerfile .",
+    "docker:run": "docker run -it --rm -v ~/.imageforge:/root/.imageforge imageforge-cli",
+    "mcp:start": "tsc && node dist/server/mcp.js",
+    "install:easy": "node dist/cli/index.js --post-install && node dist/cli/index.js ui"
+  },
+  "keywords": [
+    "ai",
+    "image-generation",
+    "cli",
+    "openai",
+    "gemini",
+    "stability-ai",
+    "dalle",
+    "flux",
+    "replicate",
+    "huggingface",
+    "vibe-coding"
+  ],
+  "author": "ImageForge Contributors",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@prisma/adapter-better-sqlite3": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "axios": "^1.7.7",
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^12.11.1",
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0",
+    "conf": "^12.0.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "figlet": "^1.8.0",
+    "form-data": "^4.0.1",
+    "fs-extra": "^11.2.0",
+    "inquirer": "^8.2.6",
+    "inquirer-autocomplete-prompt": "^2.0.1",
+    "jsonwebtoken": "^9.0.3",
+    "node-fetch": "^2.7.0",
+    "open": "^8.4.2",
+    "ora": "^5.4.1",
+    "prisma": "^7.8.0",
+    "sharp": "^0.33.5",
+    "socket.io": "^4.8.3",
+    "table": "^6.8.2",
+    "update-notifier": "^5.1.0",
+    "uuid": "^10.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/figlet": "^1.5.8",
+    "@types/fs-extra": "^11.0.4",
+    "@types/inquirer": "^8.2.10",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^22.7.5",
+    "@types/node-fetch": "^2.6.11",
+    "@types/update-notifier": "^6.0.8",
+    "@types/uuid": "^10.0.0",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}

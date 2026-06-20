@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "imageforge-ui",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["dist/cli/index.js", "ui", "--port", "7845", "--no-open"],
+      "port": 7845
+    }
+  ]
+}

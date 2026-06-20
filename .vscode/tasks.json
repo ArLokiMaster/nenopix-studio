@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build",
+      "type": "shell",
+      "command": "npm run build",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": "$tsc"
+    },
+    {
+      "label": "Watch",
+      "type": "shell",
+      "command": "npm run build:watch",
+      "group": "build",
+      "isBackground": true,
+      "problemMatcher": "$tsc-watch"
+    },
+    {
+      "label": "Install Globally",
+      "type": "shell",
+      "command": "npm run build && npm link",
+      "group": "build"
+    },
+    {
+      "label": "Generate Test Image",
+      "type": "shell",
+      "command": "node dist/cli/index.js generate \"a beautiful sunset over mountains\" --provider gemini",
+      "group": "test",
+      "dependsOn": "Build"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.associations": {
+    "*.ts": "typescript"
+  },
+  "terminal.integrated.env.windows": {
+    "IMAGEFORGE_VERBOSE": "true"
+  },
+  "tasks.json": "${workspaceFolder}/.vscode/tasks.json"
+}

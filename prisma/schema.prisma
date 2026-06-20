@@ -1,0 +1,86 @@
+// ImageForge embedded database — SQLite, no external service required.
+// The file lives at ~/.imageforge/imageforge.db at runtime (see src/server/db.ts).
+// `prisma migrate dev` here targets ./dev.db for local schema iteration only.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// One row. Decides whether the app runs solo (no login) or team (multi-user + auth).
+model AppSetting {
+  id       Int    @id @default(1)
+  authMode String @default("solo") // "solo" | "team"
+}
+
+model User {
+  id               String   @id @default(uuid())
+  username         String   @unique
+  passwordHash     String? // null for the solo-mode owner (no login required)
+  role             String   @default("MEMBER") // "SUPER_ADMIN" | "MEMBER"
+  allowedProviders String   @default("[]") // JSON string[]; empty = all providers allowed
+  costLimit        Float? // dollar cap; null = unlimited
+  costUsed         Float    @default(0)
+  genLimit         Int? // generation-count cap; null = unlimited
+  genUsed          Int      @default(0)
+  isActive         Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  projects ChatProject[]
+  sessions ChatSession[]
+}
+
+model ChatProject {
+  id           String   @id @default(uuid())
+  userId       String
+  name         String
+  instructions String   @default("")
+  color        String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user     User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sessions ChatSession[]
+
+  @@index([userId])
+}
+
+model ChatSession {
+  id           String   @id @default(uuid())
+  userId       String
+  projectId    String?
+  title        String
+  thumbnail    String?
+  rootId       String?
+  activeLeafId String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user    User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  project ChatProject? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  nodes   ChatNode[]
+
+  @@index([userId])
+  @@index([projectId])
+}
+
+model ChatNode {
+  id         String   @id @default(uuid())
+  sessionId  String
+  parentId   String?
+  role       String // "root" | "user" | "assistant"
+  content    String?
+  resultJson String? // JSON.stringify(GenerateResult)
+  refThumb   String?
+  timestamp  DateTime @default(now())
+
+  session ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+  @@index([parentId])
+}

@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//d/Users/arabd/**)",
+      "Bash(powershell -Command \"Test-Path 'C:\\\\Users\\\\arabd\\\\imageforge-test-output'\")",
+      "Read(//c/Users/arabd/.imageforge/**)",
+      "Bash(rmdir \"/c/Users/arabd/imageforge-test-output\" 2>&1; cat ~/.imageforge/config.json)",
+      "Bash(npx prisma *)",
+      "Bash(node -e \"console.log\\(require\\('./package.json'\\).type\\)\")"
+    ]
+  }
+}

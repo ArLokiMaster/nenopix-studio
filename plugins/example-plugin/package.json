@@ -1,0 +1,8 @@
+{
+  "name": "imageforge-plugin-example",
+  "version": "1.0.0",
+  "description": "Example ImageForge plugin — shows how to add a custom provider",
+  "main": "index.js",
+  "keywords": ["imageforge-plugin"],
+  "license": "MIT"
+}
