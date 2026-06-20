@@ -35,7 +35,7 @@
     "huggingface",
     "vibe-coding"
   ],
-  "author": "ImageForge Contributors",
+  "author": "ABU (Rizwani Solutions - Sri Lanka)",
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",

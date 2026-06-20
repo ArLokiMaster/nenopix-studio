@@ -193,6 +193,12 @@ console.log(result.images[0].path);
 
 ---
 
+## 👥 Ownership & Credits
+
+Nenopix Studio is owned and maintained by **Rizwani Solutions - Sri Lanka** and was founded by **ABU** (Software Engineer, Founder & Entrepreneur).
+
+---
+
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE) - free to use, modify, and distribute for personal and commercial purposes.
