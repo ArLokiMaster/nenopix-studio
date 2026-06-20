@@ -4,7 +4,7 @@
   "description": "Nenopix Studio — Unified AI Image Generation Platform CLI & MCP Server",
   "main": "dist/cli/index.js",
   "bin": {
-    "nenopix": "./dist/cli/index.js"
+    "nenopix": "dist/cli/index.js"
   },
   "scripts": {
     "copy:assets": "node -e \"require('fs-extra').copySync('src/web', 'dist/web')\"",
