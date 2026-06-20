@@ -78,7 +78,7 @@ export class HuggingFaceProvider extends AbstractProvider {
       await axios.get("https://huggingface.co/api/whoami-v2", {
         headers: {
           Authorization: `Bearer ${apiKey}`,
-          "User-Agent": "imageforge-cli/1.0.0",
+          "User-Agent": "nenopix-studio/1.0.0",
         },
         timeout: 10000,
       });
@@ -129,7 +129,7 @@ export class HuggingFaceProvider extends AbstractProvider {
                 Authorization: `Bearer ${apiKey}`,
                 "Content-Type": "application/json",
                 Accept: "image/png",
-                "User-Agent": "imageforge-cli/1.0.0",
+                "User-Agent": "nenopix-studio/1.0.0",
               },
               responseType: "arraybuffer",
               timeout: 120000,

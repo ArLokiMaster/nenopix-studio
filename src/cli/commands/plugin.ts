@@ -8,7 +8,7 @@ import { table } from "table";
 export function makePluginCommand(): Command {
   const cmd = new Command("plugin");
 
-  cmd.description("Manage ImageForge plugins");
+  cmd.description("Manage Nenopix Studio plugins");
 
   cmd
     .command("install <name>")
@@ -58,7 +58,7 @@ export function makePluginCommand(): Command {
         console.log(chalk.gray("\n  No plugins installed.\n"));
         console.log(
           chalk.dim("  Install a plugin: ") +
-            chalk.cyan("imageforge plugin install imageforge-plugin-<name>\n")
+            chalk.cyan("nenopix plugin install nenopix-plugin-<name>\n")
         );
         return;
       }

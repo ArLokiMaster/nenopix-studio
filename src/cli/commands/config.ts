@@ -11,7 +11,7 @@ export function makeConfigCommand(): Command {
 
   cmd
     .alias("cfg")
-    .description("View or edit ImageForge CLI configuration")
+    .description("View or edit Nenopix Studio CLI configuration")
     .option("--setup", "Re-run the interactive setup wizard")
     .option("--reset", "Reset all settings to defaults")
     .option("--json", "Output config as JSON")

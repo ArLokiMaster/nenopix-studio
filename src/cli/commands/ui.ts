@@ -3,7 +3,7 @@ import { startServer } from "../../server/index.js";
 
 export function makeUICommand(): Command {
   return new Command("ui")
-    .description("Launch the ImageForge Web UI (Claude-like interface)")
+    .description("Launch the Nenopix Studio Web UI (Claude-like interface)")
     .option("-p, --port <number>", "Port to listen on", "7842")
     .option("--no-open", "Don't auto-open browser")
     .action(async (opts: any) => {

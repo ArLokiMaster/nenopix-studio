@@ -19,7 +19,7 @@ export function makeModelsCommand(): Command {
       if (providerId) {
         const provider = registry.get(providerId);
         if (!provider) {
-          printError(`Provider "${providerId}" not found. Run: imageforge providers`);
+          printError(`Provider "${providerId}" not found. Run: nenopix providers`);
           process.exit(1);
         }
 
@@ -53,7 +53,7 @@ export function makeModelsCommand(): Command {
 
         console.log(
           chalk.gray("  Specify a provider to see details: ") +
-          chalk.cyan("imageforge models openai\n")
+          chalk.cyan("nenopix models openai\n")
         );
       }
     });

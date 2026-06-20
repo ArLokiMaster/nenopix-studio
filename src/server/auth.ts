@@ -6,7 +6,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { prisma } from "./db.js";
 
-const SECRET_FILE = path.join(os.homedir(), ".imageforge", ".jwt-secret");
+const SECRET_FILE = path.join(os.homedir(), ".nenopix", ".jwt-secret");
 
 function getJwtSecret(): string {
   fs.ensureDirSync(path.dirname(SECRET_FILE));

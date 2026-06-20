@@ -30,7 +30,7 @@ export abstract class AbstractProvider extends BaseProvider {
     await fs.ensureDir(outputDir);
 
     const format = (options.format || config.get("defaultFormat")) as ImageFormat;
-    const prefix = options.outputPrefix || "imageforge";
+    const prefix = options.outputPrefix || "nenopix";
     const timestamp = Date.now();
     const filename = `${prefix}_${timestamp}_${index + 1}.${format}`;
     const filepath = path.join(outputDir, filename);

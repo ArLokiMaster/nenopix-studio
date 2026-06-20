@@ -28,7 +28,7 @@ export function makeProvidersCommand(): Command {
       const configured = providers.filter((p) => p.status === "available").length;
       console.log(
         chalk.gray(`  ${configured}/${providers.length} providers configured. `) +
-          chalk.dim("Run: imageforge config --provider <id> to configure one.\n")
+          chalk.dim("Run: nenopix config --provider <id> to configure one.\n")
       );
     });
 

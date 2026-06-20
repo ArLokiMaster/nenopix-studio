@@ -63,7 +63,7 @@ async function checkOutputDir(dir: string): Promise<{ success: boolean; message:
   try {
     if (!dir || !dir.trim()) return { success: false, message: "Path can't be empty" };
     await fs.ensureDir(dir);
-    const probe = path.join(dir, `.imageforge-write-test-${Date.now()}`);
+    const probe = path.join(dir, `.nenopix-write-test-${Date.now()}`);
     await fs.writeFile(probe, "ok");
     await fs.remove(probe);
     return { success: true, message: "Folder is ready for output" };
@@ -511,7 +511,7 @@ export async function startServer(
       const url = `http://localhost:${port}`;
       console.log();
       console.log(
-        chalk.cyan("  ⚡ ImageForge Web UI") +
+        chalk.cyan("  ⚡ Nenopix Studio Web UI") +
           chalk.gray(" is running at ") +
           chalk.white.underline(url)
       );

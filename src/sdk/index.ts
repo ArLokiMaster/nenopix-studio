@@ -1,13 +1,13 @@
 /**
- * ImageForge SDK
- * Use ImageForge as a library in your Node.js applications
+ * Nenopix SDK
+ * Use Nenopix as a library in your Node.js applications
  *
  * @example
- * import { ImageForge } from 'imageforge-cli/sdk';
+ * import { Nenopix } from 'nenopix-studio/sdk';
  *
- * const forge = new ImageForge({
+ * const forge = new Nenopix({
  *   provider: 'gemini',
- *   apiKeys: { gemini: process.env.GEMINI_API_KEY }
+ *   apiKeys: { gemini: process.env.NENOPIX_GEMINI_API_KEY }
  * });
  *
  * const result = await forge.generate('a futuristic city at sunset');
@@ -32,7 +32,7 @@ import {
   ImageForgeSDKOptions,
 } from "../types/index.js";
 
-export class ImageForge {
+export class Nenopix {
   constructor(options: ImageForgeSDKOptions = {}) {
     // Apply API keys if provided
     if (options.apiKeys) {
@@ -148,7 +148,7 @@ export class ImageForge {
 }
 
 // Named exports for direct use
-export { engine, registry, promptAgent, pluginManager, credentialStore, config };
+export { engine, registry, promptAgent, pluginManager, credentialStore, config, Nenopix as ImageForge };
 
 // Type exports
 export type {

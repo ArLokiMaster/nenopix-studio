@@ -5,8 +5,8 @@ import Database from "better-sqlite3";
 import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 import { PrismaClient } from "../generated/prisma/client";
 
-const DB_DIR = path.join(os.homedir(), ".imageforge");
-const DB_FILE = path.join(DB_DIR, "imageforge.db");
+const DB_DIR = path.join(os.homedir(), ".nenopix");
+const DB_FILE = path.join(DB_DIR, "nenopix.db");
 
 // Idempotent schema bootstrap — mirrors prisma/migrations/*/migration.sql exactly.
 // Applied with a plain better-sqlite3 handle so the app never has to shell out to

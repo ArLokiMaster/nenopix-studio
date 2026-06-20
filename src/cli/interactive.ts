@@ -309,7 +309,7 @@ async function interactiveGenerate(configured: any[]): Promise<void> {
 
 async function launchWebUI(): Promise<void> {
   const { startServer } = require("../server/index.js");
-  console.log(chalk.cyan("\n  Starting ImageForge Web UI…\n"));
+  console.log(chalk.cyan("\n  Starting Nenopix Studio Web UI…\n"));
   await startServer(7842, true);
   // Keep process alive
   await new Promise<void>(() => {});
@@ -326,7 +326,7 @@ async function interactiveBrowse(): Promise<void> {
   console.log(chalk.gray("  Output folder: ") + chalk.white(outputDir));
   console.log(
     chalk.gray("  Sessions:      ") +
-    chalk.white(path.join(os.homedir(), ".imageforge", "sessions"))
+    chalk.white(path.join(os.homedir(), ".nenopix", "sessions"))
   );
   console.log();
 
@@ -441,17 +441,17 @@ function showHelp(): void {
 
   console.log(chalk.bold("  CLI Commands:\n"));
   const cmds = [
-    ["imageforge", "Interactive menu (this screen)"],
-    ["imageforge ui", "Launch Web UI on localhost:7842"],
-    ['imageforge generate "prompt"', "Generate directly from CLI"],
-    ["imageforge generate --batch file.txt", "Batch from text file"],
-    ['imageforge generate "prompt" --json', "Machine-readable output"],
-    ["imageforge providers", "List all providers"],
-    ["imageforge providers add gemini", "Add Gemini API key"],
-    ["imageforge models", "List all models"],
-    ["imageforge config", "View current config"],
-    ["imageforge config --setup", "Re-run setup wizard"],
-    ['imageforge enhance "prompt"', "Preview enhanced prompt"],
+    ["nenopix", "Interactive menu (this screen)"],
+    ["nenopix ui", "Launch Web UI on localhost:7842"],
+    ['nenopix generate "prompt"', "Generate directly from CLI"],
+    ["nenopix generate --batch file.txt", "Batch from text file"],
+    ['nenopix generate "prompt" --json', "Machine-readable output"],
+    ["nenopix providers", "List all providers"],
+    ["nenopix providers add gemini", "Add Gemini API key"],
+    ["nenopix models", "List all models"],
+    ["nenopix config", "View current config"],
+    ["nenopix config --setup", "Re-run setup wizard"],
+    ['nenopix enhance "prompt"', "Preview enhanced prompt"],
   ];
   cmds.forEach(([cmd, desc]) => {
     console.log(

@@ -1,4 +1,4 @@
-/* ImageForge Studio — front-end controller
+/* Nenopix Studio — front-end controller
    Vanilla JS over Socket.IO. Sections: state, helpers, theme, socket,
    routing, sidebar, composer, dropdown menu, generation, branching,
    projects, modals, gallery, lightbox. */
@@ -604,7 +604,7 @@ function assistantMsgEl(node){
 
   el.innerHTML = `
     <div class="msg-head"><div class="msg-avatar"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-      <div class="msg-author">ImageForge</div><div class="msg-dur">${dur}s</div></div>
+      <div class="msg-author">Nenopix Studio</div><div class="msg-dur">${dur}s</div></div>
     ${enh?`<div class="enhanced-bar">${esc(r.enhancedPrompt)}</div>`:''}
     ${n?`<div class="img-grid n${Math.min(n,4)}">${grid}</div>`:`<div class="no-image-card">${SVG('<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>','icon')}<div class="nic-title">No image was created</div><div class="nic-sub">${esc(r.error||"This generation didn't return an image. Try adjusting the prompt or switching providers.")}</div></div>`}
     <div class="gen-chips">
@@ -638,7 +638,7 @@ function appendOptimistic(text, thumb){
   u.innerHTML = `<div class="ububble">${thumb?`<img class="uref" src="${esc(thumb)}">`:''}<div>${esc(text)}</div></div>`;
   const a = document.createElement('div'); a.className = 'msg assistant'; a.id = 'optiAsst';
   const n = state.opts.count;
-  a.innerHTML = `<div class="msg-head"><div class="msg-avatar"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="msg-author">ImageForge</div></div>
+  a.innerHTML = `<div class="msg-head"><div class="msg-avatar"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="msg-author">Nenopix Studio</div></div>
     <div class="status-line"><div class="spin"></div><span id="optiThinking" class="thinking-text"></span></div>
     <div class="skeleton img-grid n${Math.min(n,4)}">${Array.from({length:n}).map(()=>'<div class="sk-card"></div>').join('')}</div>`;
   msgs.appendChild(u); msgs.appendChild(a); scrollBottom();
@@ -1029,14 +1029,14 @@ async function api(path, opts = {}){
 }
 
 function authCardHTML(html){ $('#authCard').innerHTML = html; }
-const AUTH_LOGO = `<div class="auth-logo"><div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="auth-logo-text">Image<span>Forge</span></div></div>`;
+const AUTH_LOGO = `<div class="auth-logo"><div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="auth-logo-text">Neno<span>pix</span></div></div>`;
 
 async function bootstrapAuth(){
   $('#authGate').classList.remove('hide');
   let status;
   try { status = await api('/api/auth/status'); }
   catch {
-    authCardHTML(`${AUTH_LOGO}<div class="auth-title">Can't reach the server</div><div class="auth-sub">Make sure ImageForge is running, then try again.</div>
+    authCardHTML(`${AUTH_LOGO}<div class="auth-title">Can't reach the server</div><div class="auth-sub">Make sure Nenopix Studio is running, then try again.</div>
       <button class="btn-sm btn-fill" id="authRetry" style="width:100%;padding:11px">Retry</button>`);
     $('#authRetry').onclick = bootstrapAuth;
     return;
@@ -1055,7 +1055,7 @@ async function bootstrapAuth(){
 function renderSetupChoice(){
   authCardHTML(`${AUTH_LOGO}
     <div class="auth-title">Welcome — let's set things up</div>
-    <div class="auth-sub">Choose how you'll use ImageForge on this machine.</div>
+    <div class="auth-sub">Choose how you'll use Nenopix Studio on this machine.</div>
     <div class="auth-mode-choice">
       <button class="auth-mode-opt" data-mode="solo">
         ${SVG('<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>')}

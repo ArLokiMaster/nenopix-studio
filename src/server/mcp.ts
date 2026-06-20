@@ -4,10 +4,10 @@ import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
-import { ImageForge } from "../sdk/index.js";
+import { Nenopix } from "../sdk/index.js";
 
-// Initialize ImageForge SDK
-const forge = new ImageForge();
+// Initialize Nenopix SDK
+const forge = new Nenopix();
 
 // Initialize the MCP server
 const server = new Server(

@@ -26,9 +26,9 @@ export async function runSetupWizard(force = false): Promise<void> {
   console.clear();
   printBanner();
 
-  console.log(chalk.white("Welcome to ImageForge CLI!\n"));
+  console.log(chalk.white("Welcome to Nenopix Studio CLI!\n"));
   console.log(chalk.gray("This wizard will help you configure your AI image providers.\n"));
-  console.log(chalk.dim("You can re-run this wizard anytime with: ") + chalk.cyan("imageforge config --setup\n"));
+  console.log(chalk.dim("You can re-run this wizard anytime with: ") + chalk.cyan("nenopix config --setup\n"));
 
   printDivider("Step 1: Select Providers");
   console.log(chalk.gray("\nWhich AI image providers do you want to configure?\n"));
@@ -49,7 +49,7 @@ export async function runSetupWizard(force = false): Promise<void> {
   ]);
 
   if (providers.length === 0) {
-    console.log(chalk.yellow("\nNo providers selected. You can add them later with: imageforge config\n"));
+    console.log(chalk.yellow("\nNo providers selected. You can add them later with: nenopix config\n"));
   }
 
   // Configure each selected provider
@@ -168,15 +168,15 @@ export async function runSetupWizard(force = false): Promise<void> {
       type: "input",
       name: "outputDir",
       message: "Output directory for generated images:",
-      default: path.join(os.homedir(), "imageforge-output"),
+      default: path.join(os.homedir(), "nenopix-output"),
       validate: (v: string) => {
         const trimmed = v.trim();
         // Reject bare drive roots like "d:", "D:", "d:\", "D:/"
         if (/^[a-zA-Z]:[/\\]?$/.test(trimmed)) {
-          return `Can't use a bare drive root. Try something like ${trimmed.replace(/[/\\]$/, "")}\\imageforge-output`;
+          return `Can't use a bare drive root. Try something like ${trimmed.replace(/[/\\]$/, "")}\\nenopix-output`;
         }
         if (!path.isAbsolute(trimmed)) {
-          return "Please enter an absolute path (e.g. D:\\imageforge-output)";
+          return "Please enter an absolute path (e.g. D:\\nenopix-output)";
         }
         return true;
       },
@@ -213,12 +213,12 @@ export async function runSetupWizard(force = false): Promise<void> {
 
   printDivider("Setup Complete");
   console.log();
-  printSuccess("ImageForge CLI is ready to use!\n");
+  printSuccess("Nenopix Studio CLI is ready to use!\n");
 
   console.log(chalk.gray("Quick start:"));
-  console.log(chalk.cyan('  imageforge generate "a futuristic city at sunset"'));
-  console.log(chalk.cyan("  imageforge models"));
-  console.log(chalk.cyan("  imageforge providers\n"));
+  console.log(chalk.cyan('  nenopix generate "a futuristic city at sunset"'));
+  console.log(chalk.cyan("  nenopix models"));
+  console.log(chalk.cyan("  nenopix providers\n"));
 
   console.log(chalk.dim(`Config saved to: ${config.configPath}`));
   console.log();

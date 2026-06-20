@@ -26,7 +26,7 @@ export class ImageForgeEngine {
         model: options.model || "unknown",
         prompt: options.prompt,
         duration: 0,
-        error: `Provider "${providerId}" not found. Run: imageforge providers`,
+        error: `Provider "${providerId}" not found. Run: nenopix providers`,
       };
     }
 
@@ -39,7 +39,7 @@ export class ImageForgeEngine {
         model: options.model || "unknown",
         prompt: options.prompt,
         duration: 0,
-        error: `Provider "${providerId}" is not configured. Run: imageforge config`,
+        error: `Provider "${providerId}" is not configured. Run: nenopix config`,
       };
     }
 

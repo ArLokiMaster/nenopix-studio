@@ -6,7 +6,7 @@ import { ImageForgePlugin } from "../types/index.js";
 import { registry } from "./provider-registry.js";
 import { config } from "../storage/config.js";
 
-const PLUGINS_DIR = path.join(os.homedir(), ".imageforge", "plugins");
+const PLUGINS_DIR = path.join(os.homedir(), ".nenopix", "plugins");
 
 class PluginManager {
   private loadedPlugins: Map<string, ImageForgePlugin> = new Map();
